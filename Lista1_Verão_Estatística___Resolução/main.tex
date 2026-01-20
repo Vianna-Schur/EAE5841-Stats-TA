@@ -1,0 +1,1277 @@
+% LISTA DE EXERCÍCIOS Template using "book"
+% Created by Milena Lima 
+%Email:milenascimentolima@gmail.com
+% Science Project at school 2017-FAPEAM
+% View: https://www.overleaf.com/read/syjxcffdygch
+%=======================================================
+%------------LISTA DE EXERCÍCIOS
+%=======================================================
+\documentclass[12pt,a4paper,oneside,openany]{book} 
+%=======================================================
+%-------------PACOTES 
+%=======================================================
+\usepackage[top=1cm,left=1cm,right=1.5cm,bottom=2cm]{geometry}
+\usepackage[T1]{fontenc}%Especif. a codif. de caracteres
+\usepackage{ae}%Auxílio para fontes e pdf
+\usepackage[utf8]{inputenc}
+\usepackage{lipsum}%Gerar Texto Aleatório
+\usepackage[brazil]{babel}%Traduzir para Português
+\usepackage{indentfirst}%Faz indentações em parágrafos
+\usepackage{graphicx}%Permite incluir figuras
+\usepackage{subfig} %para criar sub figuras
+\usepackage{float}% figuras
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{multirow}
+\usepackage[dvipsnames]{xcolor}%Admitir cores
+\usepackage{amsmath,amssymb,amsthm}%Incluir expressões  matemáticas, equações, teoremas, símbolos, etc
+\usepackage{lastpage}%Incluir Ficha catalográfica
+\usepackage{epigraph}%Incluir Epígrafo
+\usepackage{enumerate}
+\usepackage{enumitem}
+\newlist{questions}{enumerate}{3}
+\setlist[questions]{label=\arabic*.}
+\newcommand{\question}{\item}
+\setlist[enumerate,1]{% (
+leftmargin=*, itemsep=12pt, label={\textbf{\arabic*.)}}}
+%---
+\newlist{partes}{enumerate}{3}
+\setlist[partes]{label=(\alph*)}
+\newcommand{\parte}{\item}
+%---
+\newlist{subpartes}{enumerate}{3}
+\setlist[subpartes]{label=\alph*)}
+\newcommand{\subparte}{\item}
+%---
+\usepackage{array}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}
+\usepackage[sort&compress,round,comma,authoryear]{natbib}
+\usepackage{makeidx}
+\usepackage[colorlinks=true,urlcolor=magenta,citecolor=red,linkcolor=violet,bookmarks=true]{hyperref}
+\usepackage{lscape}%Altera a orientação de uma página
+\usepackage{pdflscape}
+\usepackage{pgfplots}
+\usepackage{epstopdf} %converte figs eps em figs pdf
+\usepackage{booktabs}
+\usepackage{pdfpages}
+\usepackage{textcomp}
+\usepackage[many]{tcolorbox}
+\usepackage{empheq}
+\usepackage{tasks}%lista alfabética
+\pagestyle{plain}
+\usepackage{dsfont}
+\newcommand{\Tr}[0]{\mathrm{Tr}}
+\newcommand{\sgn}[1]{\operatorname{sgn}\left(#1\right)}
+\newcommand*\dif{\mathop{}\!\mathrm{d}}
+\newcommand{\naturais}{\mathbb{N}}
+\newcommand{\Reais}[1]{\mathbb{R}^{#1}}
+\newcommand{\Esp}[1]{\mathbb{E}[#1]}
+\newcommand{\EspMonstro}[1]{\mathbb{E}\Bigg[#1\Bigg]}
+\newcommand{\Vari}[1]{\mathbb{V}[#1]}
+\newcommand{\VariMonstro}[1]{\mathbb{V}\Bigg[#1\Bigg]}
+\newcommand{\Estim}[1]{\hat{#1}}
+\newcommand{\Norm}[2]{\mathcal{N}(#1#2)}
+\newcommand{\Vies}[1]{\mathbb{B}[#1]}
+\newcommand{\Prob}[1]{\mathbb{P}(#1)}
+\newcommand{\ProbC}[1]{\mathds{P}_A(#1)}
+\newcommand{\ProbMonstro}[1]{\mathbb{P}\Bigg(#1\Bigg)}
+\newcommand{\Cova}[1]{\mathbb{C}\text{ov}[#1]}
+\newcommand{\CovaMonstro}[1]{\mathbb{C}\text{ov}\Bigg[#1\Bigg]}
+\definecolor{LQ}{RGB}{170,50,0}
+\definecolor{emerald}{RGB}{0,155,119}
+
+%================================================================
+%------------DIGITE AQUI
+%===============================================================
+\newcommand{\orgao}{Universidade de São Paulo}
+\newcommand{\instituto}{Instituto de Matemática e Estatística}
+\newcommand{\curso}{Aluno: Guilherme Dias Vianna}
+\newcommand{\professor}{Luis Fantozzi}
+\newcommand{\disciplina}{Verão de Estatística}
+\newcommand{\titulo}{Lista 1 (Probabilidade e Medida)}
+\newcommand{\data}{\today}
+\newcommand{\aluno}{ALUNO:}
+\newcommand{\Monitor}{-}
+\newcommand{\turma}{kkkkkkkkkkkkkkkkkkkkkkkkkk}
+%===========================================================
+
+\newcommand{\dis}{\displaystyle}
+\linespread{1.0}%espaço entre linhas
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      CABEÇALHO                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[H]
+\centering
+\begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}l@{\extracolsep{\fill}}}
+\begin{tabular}[l]{@{}l@{}}\textbf{\orgao}\\\textbf{\instituto}\\\textbf{\curso} \end{tabular} & \begin{tabular}[l]{@{}l@{}}\textbf{Professor: \professor}\\ \textbf{Monitor:} {\Monitor}\\ \textbf{Disciplina: \disciplina}\end{tabular}                                                       
+\end{tabular*}
+\end{table}
+\begin{center}
+\rule[2ex]{\textwidth}{1pt}\\
+{\Large{\titulo}}
+\end{center}
+\rule[2ex]{\textwidth}{1pt}\\
+\begin{questions}[label=\protect\circled{\bfseries\arabic*}]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                      Questões                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%=========================================================
+\question
+
+Nesse exercício, veremos como construir probabilidades em espaços elementares. 
+
+Seja $\Omega$ um conjunto \textbf{finito}. Considere um conjunto de números não-negativos $\{p_\omega: \omega \in \Omega\}$ tal que $\sum_{\omega \in \Omega} p_\omega = 1$. Cada $p_\omega$ pode ser visto como a probabilidade de que cada um dos $\omega \in \Omega$ seja sorteado pela incerteza do problema em questão.
+	
+\begin{partes}
+
+    \item Considere o espaço mensurável $(\Omega, 2^\Omega)$. Mostre que a função $S: 2^\Omega \mapsto \mathbb{R}$ dada por:
+		
+		$$S(A) \coloneqq \sum_{a \in A} p_a\, , \quad A \in 2^\Omega\, ,$$
+		define uma medida de probabilidade sobre $2^\Omega$.
+
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    Para todo $A\in 2^{\Omega}$, $S(A)\geqslant 0$ pois é soma de termos não negativos.
+    Além disso, como $A\subseteq\Omega$,
+    \[
+    S(A)=\sum_{\omega\in A}p_\omega\leqslant\sum_{\omega\in\Omega}p_\omega=1,
+    \]
+    logo $S(A)\in[0,1]$.
+    }
+    
+    \textcolor{LQ}{
+    Veja também que: 
+    $$S(\varnothing)=\sum_{\omega\in\varnothing}p_\omega=0,$$ 
+    e, pela hipótese,
+    $S(\Omega)=\sum_{\omega\in\Omega}p_\omega=1$. } 
+    
+    \textcolor{LQ}{
+    Se $(A_n)_{n\in\mathbb{N}}\subset 2^{\Omega}$ são dois a dois disjuntos, então, como $\Omega$ é finito, apenas um número finito dos $A_n$ são não vazios.
+    De fato, no máximo $|\Omega|$ deles podem ser não vazios, pois conjuntos disjuntos não vazios contêm elementos distintos.
+    Assim, existe $N\leqslant|\Omega|$ tal que $A_n=\varnothing$ para todo $n>N$, e
+    \[
+    S\left(\bigcup_{n\in\mathbb{N}}A_n\right)
+    =S\left(\bigcup_{n=1}^{N}A_n\right)
+    =\sum_{\omega\in\cup_{n=1}^{N}A_n}p_\omega
+    =\sum_{n=1}^{N}\sum_{\omega\in A_n}p_\omega
+    =\sum_{n=1}^{N}S(A_n)
+    =\sum_{n\in\mathbb{N}}S(A_n).
+    \]
+    }
+    \textcolor{LQ}{
+    Todas as propriedades necessárias para uma medida de probabilidade estão provadas.}
+
+    \newpage
+    
+    \item Mostre que a medida $S$ é a única extensão possível de $\{\{a\}:a \in \mathcal{A}\}$ para $2^\Omega$ que preserva as probabilidades $\{p_a\}_a$, no seguinte sentido: qualquer outra medida $H$ sobre $2^\Omega$ que satisfaz
+				$H[\{a\}] = p_a,\, , \forall a \in \Omega\,,$
+				é tal que $H=S$.
+    
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    Se $A=\varnothing$, então $H(A)=0=S(A)$.
+    }
+    
+    \textcolor{LQ}{
+    Para $A\neq\varnothing$, escreva $A=\{\omega_1,\dots,\omega_k\}$, com $1\leqslant k\leqslant|\Omega|$.
+    Os conjuntos $\{\omega_1\},\dots,\{\omega_k\}$ são dois a dois disjuntos, logo, pela $\sigma$-aditividade (que implica aditividade finita),
+    \[
+    H(A)=H\left(\bigcup_{i=1}^{k}\{\omega_i\}\right)=\sum_{i=1}^{k}H\left(\{\omega_i\}\right)
+    =\sum_{i=1}^{k}p_{\omega_i}=S(A).
+    \]
+    Portanto, $H(A)=S(A)$ para todo $A\subseteq\Omega$, isto é, $H\equiv S$.
+    }
+
+    \item Mostre que, tomando como base o espaço mensurável $(\Omega, 2^\Omega)$, qualquer função $f: \Omega \mapsto \mathbb{R}$ constitui uma variável aleatória.
+    
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    Para provar que $f$ é uma variável aleatória basta
+    mostrar que $f$ é $2^{\Omega}/\mathcal{B}(\mathbb{R})$-mensurável, isto é,
+    que
+    \[
+    f^{-1}(B)\in 2^{\Omega}\quad\text{para todo }B\in\mathcal{B}(\mathbb{R}).
+    \]
+    Mas $f^{-1}(B)\subseteq\Omega$ para qualquer $B\subseteq\mathbb{R}$, e
+    $2^{\Omega}$ é exatamente o conjunto de \emph{todos} os subconjuntos de
+    $\Omega$. Logo, $f^{-1}(B)\in 2^{\Omega}$ para todo boreliano $B$, e
+    conclui-se que $f$ é mensurável. Portanto, toda função $f:\Omega\to\mathbb{R}$
+    é uma variável aleatória quando o domínio é munido de $2^{\Omega}$.
+    }
+
+\end{partes}
+
+
+    
+\question
+
+ O objetivo destes exercícios consiste em construir o espaço $((0,1],\mathcal{B}(0,1], \widetilde{\operatorname{Leb}})$.
+
+\begin{partes}
+
+    \item Considere o conjunto $\mathcal{A}$ de subconjuntos de $(0,1]$ da forma:
+		
+		$$\cup_{i=1}^n (a_i,b_i]\, ,$$
+		com $n \in \mathbb{N}$ e $0\leq a_1\leq b_1 \leq a_2\leq b_2 \leq \ldots \leq a_n \leq b_n \leq 1$. Mostre que esse conjunto $\mathcal{A}$ forma uma \textbf{álgebra}, no seguinte sentido: (1) $(0,1], \emptyset \in \mathcal{A}$; (2) se $A\in \mathcal{A}$, então $A^\complement \in \mathcal{A}$; e (3) sejam $A_1, A_2, \ldots A_k$ elementos de $\mathcal{A}$, com $k <\infty$, então $\cup_{l=1}^k A_l \in \mathcal{A}$.
+
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+        Defina
+        \[
+        \mathcal{A}
+        :=\left\{
+        \bigcup_{i=1}^{n}(a_i,b_i] \subset (0,1] :
+        n\in\mathbb{N},\ 0\leqslant a_1\leqslant b_1\leqslant a_2\leqslant b_2\leqslant\cdots\leqslant a_n\leqslant b_n\leqslant 1
+        \right\}.
+        \]
+        Os intervalos estão ordenados e são disjuntos (admitindo-se junção na fronteira, pois o lado esquerdo é aberto).
+        }
+        
+        \textcolor{LQ}{
+        \textit{(1) $(0,1],\varnothing\in\mathcal{A}$}:
+        }
+        
+        \textcolor{LQ}{
+        Temos $(0,1]=(0,1]$ com $n=1$, $a_1=0$, $b_1=1$.
+        E $\varnothing=(a,a]$ para qualquer $a\in[0,1]$, logo $\varnothing\in\mathcal{A}$.
+        }
+        
+        \textcolor{LQ}{
+        \textit{(2) Fechamento por complemento relativo a $(0,1]$}:
+        }
+
+        \textcolor{LQ}{
+        Se $A=\bigcup_{i=1}^{n}(a_i,b_i]\in\mathcal{A}$, com
+        $0\leqslant a_1\leqslant b_1\leqslant\cdots\leqslant a_n\leqslant b_n\leqslant 1$, então
+        \[
+        (0,1]\setminus A
+        =(0,a_1]\ \cup\ \bigcup_{i=1}^{n-1}(b_i,a_{i+1}]\ \cup\ (b_n,1].
+        \]
+        Cada parcela é do tipo $(\alpha,\beta]$ com $\alpha\leqslant\beta$; logo $(0,1]\setminus A\in\mathcal{A}$.
+        }
+
+        \textcolor{LQ}{
+        \textit{(3) Fechamento por uniões finitas}:
+        }
+
+        \textcolor{LQ}{
+        Sejam $A_1,\dots,A_k\in\mathcal{A}$, onde
+        \[
+        A_r=\bigcup_{i=1}^{n_r}\left(a_i^{(r)},\,b_i^{(r)}\right],\qquad r=1,\dots,k,
+        \]
+        com as famílias em cada $A_r$ ordenadas como acima.}
+
+        \textcolor{LQ}{
+        Considere o conjunto finito de pontos extremos
+        \[
+        E:=\{0,1\}\cup\bigcup_{r=1}^{k}\left\{a_i^{(r)},b_i^{(r)}:1\leqslant i\leqslant n_r\right\},
+        \]
+        e ordene $E$ como $0=x_0<x_1<\cdots<x_m=1$ (eliminando repetições).
+        Os intervalos \(\left(x_{j-1},x_j\right]\), $j=1,\dots,m$, formam uma partição finita de $(0,1]$.
+        Como os extremos de cada $(a_i^{(r)},b_i^{(r)}]$ pertencem a $E$, cada $A_r$ é união de alguns destes intervalos
+        \(\left(x_{j-1},x_j\right]\).
+        Logo $\bigcup_{r=1}^{k}A_r$ é união de certos intervalos da partição; agrupando intervalos consecutivos,
+        obtemos uma união finita de intervalos disjuntos do tipo $(\alpha,\beta]$, isto é, um elemento de $\mathcal{A}$.
+        }
+
+        \textcolor{LQ}{
+        Conclui-se que $\mathcal{A}$ contém $(0,1]$ e $\varnothing$, é fechada por complemento relativo a $(0,1]$
+        e por uniões finitas; portanto, $\mathcal{A}$ é uma álgebra em $(0,1]$.
+        }
+        
+    \item Defina a função ${\widetilde{\operatorname{Leb}}}: \mathcal{A}\mapsto [0,1]$, da seguinte forma. Se $A = \cup_{i=1}^n (a_i,b_i]$, então
+		$${\widetilde{\operatorname{Leb}}}(A) = \sum_{l=1}^n (b_i - a_i)\, .$$
+		Mostre que $\widetilde{\operatorname{Leb}}$ está bem definida, isto é, que o valor de ${\widetilde{\operatorname{Leb}}}(A)$ é o mesmo para duas representações distintas de um mesmo conjunto $A$ em termos de união de intervalos disjuntos; e que ${\widetilde{\operatorname{Leb}}}(\emptyset) = 0$ e ${\widetilde{\operatorname{Leb}}}(0,1]=1$.
+
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    \[
+    \widetilde{\mathrm{Leb}}(A):=\sum_{i=1}^{n}(b_i-a_i).
+    \]
+    }
+
+    \textcolor{LQ}{
+    \textbf{Bem-definição}:
+    }
+
+    \textcolor{LQ}{
+    Suponha que o mesmo conjunto $A$ admita também
+    \[
+    A=\bigcup_{j=1}^{m}(c_j,d_j],\qquad
+    0\leqslant c_1\leqslant d_1\leqslant\cdots\leqslant c_m\leqslant d_m\leqslant 1.
+    \]
+    Considere o conjunto finito de extremos
+    \[
+    E:=\{0,1\}\cup\{a_i,b_i:1\leqslant i\leqslant n\}\cup\{c_j,d_j:1\leqslant j\leqslant m\},
+    \]
+    e ordene-o como $0=x_0<x_1<\cdots<x_r=1$.
+    Os intervalos
+    \[
+    I_k:=(x_{k-1},x_k],\qquad k=1,\dots,r,
+    \]
+    formam uma partição disjunta de $(0,1]$.
+    Como as fronteiras de todos os intervalos de ambas as representações pertencem a $E$,
+    cada $(a_i,b_i]$ (e cada $(c_j,d_j]$) é união disjunta de alguns $I_k$.
+    Logo, para algum conjunto de índices $K\subset\{1,\dots,r\}$,
+    \[
+    A=\bigcup_{k\in K} I_k
+    \quad\text{e}\quad
+    b_i-a_i=\sum_{k:\ I_k\subset(a_i,b_i]}(x_k-x_{k-1})\quad\text{para cada }i.
+    \]
+    Somando em $i$ e usando a disjunção, obtemos
+    \[
+    \sum_{i=1}^{n}(b_i-a_i)=\sum_{k\in K}(x_k-x_{k-1}).
+    \]
+    O mesmo raciocínio aplicado à segunda representação dá
+    \[
+    \sum_{j=1}^{m}(d_j-c_j)=\sum_{k\in K}(x_k-x_{k-1}).
+    \]
+    Portanto
+    \[
+    \sum_{i=1}^{n}(b_i-a_i)=\sum_{j=1}^{m}(d_j-c_j),
+    \]
+    e o valor de $\widetilde{\mathrm{Leb}}(A)$ independe da representação de $A$ como união
+    finita de intervalos disjuntos de tipo $(\cdot,\cdot]$.
+    }
+
+    \textcolor{LQ}{
+    \textbf{Valores em $\varnothing$ e $(0,1]$, e imagem em $[0,1]$}:
+    }
+
+    \textcolor{LQ}{
+    Temos $\widetilde{\mathrm{Leb}}(\varnothing)=0$, pois $\varnothing=(a,a]$ e então $b_1-a_1=0$.
+    Além disso, $\widetilde{\mathrm{Leb}}((0,1])=1$ escolhendo $n=1$, $a_1=0$, $b_1=1$.
+    Finalmente, para $A=\bigcup_{i=1}^{n}(a_i,b_i]$ como acima,
+    \[
+    0\leqslant \sum_{i=1}^{n}(b_i-a_i)
+    = (b_n-a_1)-\sum_{i=1}^{n-1}(a_{i+1}-b_i)
+    \leqslant b_n-a_1\leqslant 1,
+    \]
+    logo $\widetilde{\mathrm{Leb}}:\mathcal{A}\to[0,1]$ está bem definida.
+    }
+    
+    \item Mostre que ${\widetilde{\operatorname{Leb}}}$ é \textbf{aditiva} em $\mathcal{A}$, isto é, para $A_1, A_2, \ldots A_k$, $k <\infty$, elementos \textbf{disjuntos} de $\mathcal{A}$:
+		
+		$$\widetilde{\operatorname{Leb}}(\cup_{l=1}^k A_l) = \sum_{l=1}^k \widetilde{\operatorname{Leb}}(A_l)$$
+
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    Sejam $A_1,\dots,A_k\in\mathcal{A}$ dois a dois disjuntos, com
+    \[
+    A_\ell=\bigcup_{i=1}^{n_\ell}\left(a_i^{(\ell)},b_i^{(\ell)}\right],\qquad
+    0\leqslant a_1^{(\ell)}\leqslant b_1^{(\ell)}\leqslant\cdots\leqslant a_{n_\ell}^{(\ell)}\leqslant b_{n_\ell}^{(\ell)}\leqslant 1.
+    \]
+    Como os $A_\ell$ são disjuntos, toda a família de intervalos
+    $\left\{\left(a_i^{(\ell)},b_i^{(\ell)}\right]\right\}_{\ell,i}$ é também disjunta.
+    }
+
+    \textcolor{LQ}{
+    Considere o conjunto finito de extremos
+    \[
+    E:=\{0,1\}\cup\bigcup_{\ell=1}^{k}\left\{a_i^{(\ell)},b_i^{(\ell)}:1\leqslant i\leqslant n_\ell\right\}
+    \]
+    e ordene-o como $0=x_0<x_1<\dots<x_m=1$.
+    Os átomos $I_j:=(x_{j-1},x_j]$, $j=1,\dots,m$, particionam $(0,1]$.
+    Como os extremos de cada $\left(a_i^{(\ell)},b_i^{(\ell)}\right]$ pertencem a $E$, para cada $\ell$ existe um conjunto de índices $K_\ell\subset\{1,\dots,m\}$ tal que
+    \[
+    A_\ell=\bigcup_{j\in K_\ell} I_j
+    \quad\text{e}\quad
+    \widetilde{\mathrm{Leb}}(A_\ell)=\sum_{j\in K_\ell}(x_j-x_{j-1}).
+    \]
+    A disjunção dos $A_\ell$ implica $K_\ell\cap K_r=\varnothing$ se $\ell\neq r$.
+    Logo
+    \[
+    \bigcup_{\ell=1}^{k}A_\ell=\bigcup_{\ell=1}^{k}\bigcup_{j\in K_\ell} I_j
+    =\bigcup_{j\in\cup_{\ell}K_\ell} I_j,
+    \]
+    uma união disjunta de intervalos. Usando a definição de $\widetilde{\mathrm{Leb}}$ e reordenando somas finitas,
+    \[
+    \widetilde{\mathrm{Leb}}\left(\bigcup_{\ell=1}^{k}A_\ell\right)
+    =\sum_{j\in\cup_{\ell}K_\ell}(x_j-x_{j-1})
+    =\sum_{\ell=1}^{k}\sum_{j\in K_\ell}(x_j-x_{j-1})
+    =\sum_{\ell=1}^{k}\widetilde{\mathrm{Leb}}(A_\ell).
+    \]
+    Portanto, $\widetilde{\mathrm{Leb}}$ é aditiva em $\mathcal{A}$ para uniões finitas de conjuntos disjuntos.
+    }
+    
+    \item Usando o resultado anterior, mostre que   $\widetilde{\operatorname{Leb}}$ é enumeravelmente \textbf{aditiva} em $\mathcal{A}$, isto é, para  $(A_n)_{n \in \mathbb{N}} \in \mathcal{A}^\infty$, $A_j \cap A_i = \emptyset$ se $i \neq j$, {\color{red}e tal que $\cup_{l=1}^\infty A_l \in \mathcal{A}$}:
+		
+		$$\widetilde{\operatorname{Leb}}(\cup_{l=1}^\infty A_l) = \sum_{l=1}^\infty \widetilde{\operatorname{Leb}}(A_l)$$
+		
+		\textit{Dica:} para os itens (c) e (d), veja o Teorema 1.3 em Billingsley (1995), ``Probability and Measure''.
+        
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    Sejam $(A_\ell)_{\ell\geqslant 1}\subset\mathcal{A}$ dois a dois disjuntos e
+    \[
+    U:=\bigcup_{\ell=1}^{\infty}A_\ell\in\mathcal{A}.
+    \]
+    Escreva $U$ como união finita e disjunta de intervalos do tipo $(\alpha_s,\beta_s]$:
+    \[
+    U=\bigcup_{s=1}^{m}J_s,\qquad J_s=(\alpha_s,\beta_s],\ s=1,\dots,m.
+    \]
+    Para cada $s$ e $\ell$, ponha $A_\ell^{(s)}:=A_\ell\cap J_s$. Então
+    $A_\ell=\bigcup_{s=1}^{m}A_\ell^{(s)}$ com uniões disjuntas, e
+    $J_s=\bigcup_{\ell=1}^{\infty}A_\ell^{(s)}$ com uniões disjuntas.
+    }
+
+    \textcolor{LQ}{
+    Como $A_\ell\in\mathcal{A}$, cada $A_\ell^{(s)}$ é união finita de intervalos
+    $(a,b]$. Logo, para cada $s$, a família de intervalos que compõe os
+    $A_\ell^{(s)}$ é enumerável, disjunta e tem união $J_s$.
+    Pelo teorema da dica (Billingsley, Teorema 1.3 (iii)),
+    \[
+    \widetilde{\mathrm{Leb}}(J_s)=\sum_{\ell=1}^{\infty}\widetilde{\mathrm{Leb}}\!\left(A_\ell^{(s)}\right).
+    \]
+    Somando em $s$ e usando que as somas são de termos não negativos,
+    \[
+    \widetilde{\mathrm{Leb}}(U)
+    =\sum_{s=1}^{m}\widetilde{\mathrm{Leb}}(J_s)
+    =\sum_{s=1}^{m}\sum_{\ell=1}^{\infty}\widetilde{\mathrm{Leb}}\!\left(A_\ell^{(s)}\right)
+    =\sum_{\ell=1}^{\infty}\sum_{s=1}^{m}\widetilde{\mathrm{Leb}}\!\left(A_\ell^{(s)}\right).
+    \]
+    Por aditividade finita de $\widetilde{\mathrm{Leb}}$ (resultado anterior),
+    \[
+    \sum_{s=1}^{m}\widetilde{\mathrm{Leb}}\!\left(A_\ell^{(s)}\right)
+    =\widetilde{\mathrm{Leb}}(A_\ell)\quad\text{para todo }\ell.
+    \]
+    Logo
+    \[
+    \widetilde{\mathrm{Leb}}\!\left(\bigcup_{\ell=1}^{\infty}A_\ell\right)
+    =\sum_{\ell=1}^{\infty}\widetilde{\mathrm{Leb}}(A_\ell),
+    \]
+    isto é, $\widetilde{\mathrm{Leb}}$ é enumeravelmente aditiva em $\mathcal{A}$
+    sob a hipótese de que a união pertence a $\mathcal{A}$.
+    }
+    
+    \newpage
+
+    \item Recorra ao Teorema 1.7 de Williams (1991), ``Probability with Martingales'' para concluir que existe uma única medida de probabilidade que estende $\widetilde{\operatorname{Leb}}$  a  $\mathcal{B}(0,1]$.
+		
+    \textcolor{LQ}{\textbf{Resolução:}}
+
+    \textcolor{LQ}{
+    \textbf{Teorema 1.7 do Williams (Extensão de Carathéodory; tradução).}}
+
+    \textcolor{LQ}{
+    Seja $S$ um conjunto, $\Sigma_0$ uma \textit{álgebra} em $S$ e ponha
+    $\Sigma:=\sigma(\Sigma_0)$.
+    Se $\mu_0:\Sigma_0\to[0,\infty]$ é enumeravelmente aditiva
+    (isto é, uma \emph{pré-medida}), então existe uma medida $\mu$ em $(S,\Sigma)$
+    tal que $\mu=\mu_0$ em $\Sigma_0$.
+    Se, além disso, $\mu_0(S)<\infty$, essa extensão é única
+    (\emph{uma álgebra é um $\pi$-sistema}).
+    }
+    \medskip
+    \textcolor{LQ}{
+    Nos itens anteriores mostramos:}
+
+    \textcolor{LQ}{
+    (i) $\mathcal{A}$ é uma álgebra de subconjuntos de $(0,1]$.
+    }
+
+    \textcolor{LQ}{
+    (ii) $\widetilde{\mathrm{Leb}}:\mathcal{A}\to[0,1]$ está bem definida,
+    $\widetilde{\mathrm{Leb}}(\varnothing)=0$ e $\widetilde{\mathrm{Leb}}((0,1])=1$.
+    }
+
+    \textcolor{LQ}{
+    (iii) $\widetilde{\mathrm{Leb}}$ é enumeravelmente aditiva em $\mathcal{A}$
+    (uniões disjuntas cuja união pertence a $\mathcal{A}$).
+    }
+
+    \textcolor{LQ}{
+    Logo, tomando $S=(0,1]$, $\Sigma_0=\mathcal{A}$ e $\mu_0=\widetilde{\mathrm{Leb}}$,
+    todas as hipóteses do Teorema de Extensão de Carathéodory estão satisfeitas.
+    }
+
+    \textcolor{LQ}{
+    Conclui-se que existe uma medida $\mu$ em
+    $\sigma(\mathcal{A})$ com $\mu\vert_{\mathcal{A}}=\widetilde{\mathrm{Leb}}$.
+    }
+
+    \textcolor{LQ}{
+    Como $\widetilde{\mathrm{Leb}}((0,1])=1<\infty$, a extensão é \textbf{única}
+    e, portanto, é uma \textbf{medida de probabilidade}.
+    }
+
+    \textcolor{LQ}{
+    Por fim, ainda precisamos provar que  $\sigma(\mathcal{A})=\mathcal{B}((0,1])$:
+    }
+
+    \textcolor{LQ}{
+    De um lado, $(a,b]\in\mathcal{B}((0,1])$ pois
+    $(a,b]=\bigcap_{n\geqslant 1}(a,b+1/n)$; logo $\mathcal{A}\subset\mathcal{B}((0,1])$
+    e $\sigma(\mathcal{A})\subset\mathcal{B}((0,1])$.
+    }
+
+    \textcolor{LQ}{
+    Do outro lado, para $a<b$,
+    \[
+    (a,b)=\bigcup_{m\geqslant 1}\bigl(a+1/m,\ b-1/m\bigr]
+    =\bigcup_{\substack{p,q\in\mathbb{Q}\\ a<p<q<b}}(p,q],
+    \]
+    uma união enumerável de intervalos do tipo $(\cdot,\cdot]$,
+    de modo que todo aberto de $(0,1]$ pertence a $\sigma(\mathcal{A})$ e, portanto,
+    $\mathcal{B}((0,1])\subset\sigma(\mathcal{A})$.
+    Assim, $\sigma(\mathcal{A})=\mathcal{B}((0,1])$.
+    }
+
+    \textcolor{LQ}{
+    Concluímos então: existe \textbf{uma única} medida de probabilidade $\mu$ em
+    $\bigl((0,1],\mathcal{B}((0,1])\bigr)$ que estende $\widetilde{\mathrm{Leb}}$
+    (em particular, $\mu((a,b])=b-a$ para todo $(a,b]\subset(0,1]$)
+    }
+\end{partes}    
+
+{\footnotesize{
+\noindent\textcolor{emerald}{\textbf{Exemplo numérico (partição via extremos).}
+\[
+\underbrace{A=(0.1,0.3]\ \cup\ (0.5,0.7]\ \cup\ (0.8,0.9]}_{\text{Rep.\ 1}}
+\qquad=\qquad
+\underbrace{(0.1,0.2]\ \cup\ (0.2,0.3]\ \cup\ (0.5,0.7]\ \cup\ (0.8,0.9]}_{\text{Rep.\ 2}}.
+\]
+Forme o conjunto de extremos
+\[
+E=\{0,1\}\cup\{0.1,0.2,0.3,0.5,0.7,0.8,0.9\}.
+\]
+Ordenando $E$ como $0=x_0<x_1<\cdots<x_8=1$, os \emph{átomos} são
+\[
+I_j=(x_{j-1},x_j],\quad j=1,\dots,8,
+\]
+isto é:
+\[
+\begin{aligned}
+&I_1=(0,0.1],\ I_2=(0.1,0.2],\ I_3=(0.2,0.3],\ I_4=(0.3,0.5],\\
+&I_5=(0.5,0.7],\ I_6=(0.7,0.8],\ I_7=(0.8,0.9],\ I_8=(0.9,1].
+\end{aligned}
+\]
+Independentemente da representação, tem-se
+\[
+A=I_2\ \cup\ I_3\ \cup\ I_5\ \cup\ I_7.
+\]}}
+
+\begin{center}
+\begin{tikzpicture}[x=10cm,y=1.2cm,>=stealth]
+  % grades verticais nos extremos
+  \foreach \xx/\lab in {0/0,0.1/0.1,0.2/0.2,0.3/0.3,0.5/0.5,0.7/0.7,0.8/0.8,0.9/0.9,1/1}{
+    \draw[gray!50] (\xx,0.6) -- (\xx,-1.3);
+    \node[below] at (\xx,-1.35) {\small \lab};
+  }
+  % rótulos das linhas
+  \node[left] at (-0.02,0.35) {\small Rep.\ 1:};
+  \node[left] at (-0.02,-0.35) {\small Rep.\ 2:};
+  \node[left] at (-0.02,-1.05) {\small Átomos de $E$:};
+
+  % --- Representação 1 ---
+  % (0.1,0.3]
+  \draw[ultra thick,blue] (0.1,0.35) -- (0.3,0.35);
+  \draw[blue,fill=white] (0.1,0.35) circle (1.5pt);
+  \fill[blue] (0.3,0.35) circle (1.5pt);
+  % (0.5,0.7]
+  \draw[ultra thick,blue] (0.5,0.35) -- (0.7,0.35);
+  \draw[blue,fill=white] (0.5,0.35) circle (1.5pt);
+  \fill[blue] (0.7,0.35) circle (1.5pt);
+  % (0.8,0.9]
+  \draw[ultra thick,blue] (0.8,0.35) -- (0.9,0.35);
+  \draw[blue,fill=white] (0.8,0.35) circle (1.5pt);
+  \fill[blue] (0.9,0.35) circle (1.5pt);
+
+  % --- Representação 2 ---
+  % (0.1,0.2]
+  \draw[ultra thick,teal!60!black] (0.1,-0.35) -- (0.2,-0.35);
+  \draw[teal!60!black,fill=white] (0.1,-0.35) circle (1.5pt);
+  \fill[teal!60!black] (0.2,-0.35) circle (1.5pt);
+  % (0.2,0.3]
+  \draw[ultra thick,teal!60!black] (0.2,-0.35) -- (0.3,-0.35);
+  \draw[teal!60!black,fill=white] (0.2,-0.35) circle (1.5pt);
+  \fill[teal!60!black] (0.3,-0.35) circle (1.5pt);
+  % (0.5,0.7]
+  \draw[ultra thick,teal!60!black] (0.5,-0.35) -- (0.7,-0.35);
+  \draw[teal!60!black,fill=white] (0.5,-0.35) circle (1.5pt);
+  \fill[teal!60!black] (0.7,-0.35) circle (1.5pt);
+  % (0.8,0.9]
+  \draw[ultra thick,teal!60!black] (0.8,-0.35) -- (0.9,-0.35);
+  \draw[teal!60!black,fill=white] (0.8,-0.35) circle (1.5pt);
+  \fill[teal!60!black] (0.9,-0.35) circle (1.5pt);
+
+  % --- Átomos a partir de E (todos em cinza claro) ---
+  % (0,0.1]
+  \draw[line width=2pt,gray!40] (0,-1.05) -- (0.1,-1.05);
+  \draw[gray!60,fill=white] (0,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.1,-1.05) circle (1.3pt);
+  % (0.1,0.2]
+  \draw[line width=2pt,gray!40] (0.1,-1.05) -- (0.2,-1.05);
+  \draw[gray!60,fill=white] (0.1,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.2,-1.05) circle (1.3pt);
+  % (0.2,0.3]
+  \draw[line width=2pt,gray!40] (0.2,-1.05) -- (0.3,-1.05);
+  \draw[gray!60,fill=white] (0.2,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.3,-1.05) circle (1.3pt);
+  % (0.3,0.5]
+  \draw[line width=2pt,gray!40] (0.3,-1.05) -- (0.5,-1.05);
+  \draw[gray!60,fill=white] (0.3,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.5,-1.05) circle (1.3pt);
+  % (0.5,0.7]
+  \draw[line width=2pt,gray!40] (0.5,-1.05) -- (0.7,-1.05);
+  \draw[gray!60,fill=white] (0.5,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.7,-1.05) circle (1.3pt);
+  % (0.7,0.8]
+  \draw[line width=2pt,gray!40] (0.7,-1.05) -- (0.8,-1.05);
+  \draw[gray!60,fill=white] (0.7,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.8,-1.05) circle (1.3pt);
+  % (0.8,0.9]
+  \draw[line width=2pt,gray!40] (0.8,-1.05) -- (0.9,-1.05);
+  \draw[gray!60,fill=white] (0.8,-1.05) circle (1.3pt);
+  \fill[gray!60] (0.9,-1.05) circle (1.3pt);
+  % (0.9,1]
+  \draw[line width=2pt,gray!40] (0.9,-1.05) -- (1,-1.05);
+  \draw[gray!60,fill=white] (0.9,-1.05) circle (1.3pt);
+  \fill[gray!60] (1,-1.05) circle (1.3pt);
+
+  % realce dos átomos que formam A
+  \foreach \a/\b in {0.1/0.2,0.2/0.3,0.5/0.7,0.8/0.9}{
+    \draw[ultra thick,red] (\a,-1.05) -- (\b,-1.05);
+    \draw[red,fill=white] (\a,-1.05) circle (1.5pt);
+    \fill[red] (\b,-1.05) circle (1.5pt);
+  }
+\end{tikzpicture}
+\end{center}}
+
+
+\newpage
+
+\question
+
+O objetivo deste exercício consiste em mostrar que existem conjuntos que não estão em $\mathcal{B}(0,1]$.
+	Para começar, definamos a seguinte operação entre dois números $x,y \in (0,1]$.
+			
+			$$x\oplus y = \begin{cases}
+				x+y \, , & \text{se } x+ y \leqslant 1\\
+				x+y -1\, , & \text{se } x+y > 1
+			\end{cases}$$
+					É possível mostrar (não faremos isso) que, para todo $x \in (0,1]$ e $A\in \mathcal{B}[0,1)$, o conjunto $A\oplus x \coloneqq \{a \oplus x: x \in A\}$ é mensurável (i.e. $A\oplus x \in \mathcal{B}[0,1)$) e que $\operatorname{Leb}(A\oplus x) = \operatorname{Leb}(A)$ (a medida de Lebesgue é invariante a translações).
+    \begin{partes}            
+			\item Defina a relação $\sim$ sobre $[0,1)$ da forma:
+			$x\sim y \iff \exists r \in \mathbb{Q}\cap (0,1], x \oplus r  = y$. Mostre que $\sim$ é uma relação de equivalência, i.e. reflexiva, simétrica e transitiva.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            \textbf{Reflexiva.}
+            }
+
+            \textcolor{LQ}{
+            Para todo $x\in(0,1]$, tomando $r=1\in\mathbb{Q}\cap(0,1]$,
+            temos $x\oplus r=x$, logo $x\sim x$.
+            }
+
+            \textcolor{LQ}{
+            \textbf{Simétrica.}
+            }
+
+            \textcolor{LQ}{
+            Se $x\sim y$, existe $r\in\mathbb{Q}\cap(0,1]$ com $y=x\oplus r$.
+            Defina
+            \[
+            r^\ast=\begin{cases}
+            1-r,& r\in(0,1),\\
+            1,& r=1.
+            \end{cases}
+            \]
+            Então $r^\ast\in\mathbb{Q}\cap(0,1]$,
+            \[
+            y\oplus r^\ast=(x\oplus r)\oplus r^\ast
+            =x\oplus\bigl(r\oplus r^\ast\bigr)
+            =x\oplus 1=x,
+            \]
+            isto é, $y\sim x$.
+            }
+
+            \textcolor{LQ}{
+            \textbf{Transitiva.}
+            }
+
+            \textcolor{LQ}{
+            Se $x\sim y$ e $y\sim z$, existem $r,s\in\mathbb{Q}\cap(0,1]$ tais que
+            $y=x\oplus r$ e $z=y\oplus s$.
+            Ponha $t:=r\oplus s$, que pertence a $\mathbb{Q}\cap(0,1]$ porque
+            \[
+            t=
+            \begin{cases}
+            r+s,& r+s\le 1,\\
+            r+s-1,& r+s>1.
+            \end{cases}
+            \]
+            Veja também que,
+            \[
+            z=(x\oplus r)\oplus s
+            =x\oplus(r\oplus s)
+            =x\oplus t,
+            \]
+            logo $x\sim z$.
+            }
+
+            \textcolor{LQ}{
+            Conclui-se que $\sim$ é reflexiva, simétrica e transitiva; portanto, uma relação de equivalência em $(0,1]$.
+            }
+            
+			\item Para $x \in [0,1)$, defina a classe de equivalência $[x]_{\sim} = \{a \in [0,1]: a \sim x\}$. Mostre que, se $[x]_{\sim} \neq [y]_{\sim}$, então $[x]_{\sim} \cap [y]_{\sim} = \emptyset$, e que $\cup_{a \in (0,1]} [a]_{\sim} = (0,1]$. Conclua que a coleção $\mathcal{S} = \{[a]_{\sim}: a \in (0,1]\}$ forma uma partição de $(0,1]$.
+            
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Suponha que exista $z\in[x]_{\sim}\cap[y]_{\sim}$.
+            }
+            
+            \textcolor{LQ}{
+            Então $x\sim z$ e $y\sim z$; pela simetria, $z\sim y$, e pela transitividade,
+            $x\sim y$. 
+            }
+
+            \textcolor{LQ}{
+            Logo, para todo $t$, $t\in[x]_{\sim}\iff t\sim x\iff t\sim y\iff t\in[y]_{\sim}$,
+            o que dá $[x]_{\sim}=[y]_{\sim}$, uma contradição. 
+            }
+            
+            \textcolor{LQ}{
+            Portanto, classes distintas
+            são disjuntas.
+            }
+            
+            \textcolor{LQ}{
+            Para vermos que a união é equivalente a \((0,1]\), veja que:
+            }
+
+            \textcolor{LQ}{
+            A inclusão $\subseteq$ é óbvia, pois cada $[a]_{\sim}\subset(0,1]$.
+            Para a inclusão $\supseteq$, dado $x\in(0,1]$, pela reflexividade $x\sim x$,
+            logo $x\in[x]_{\sim}$; portanto, todo ponto de $(0,1]$ pertence à união.
+            }
+
+            \textcolor{LQ}{
+            Como cada classe $[a]_{\sim}$ é não vazia (contém o próprio $a$), classes
+            distintas são disjuntas e a união de todas elas é $(0,1]$, concluímos que
+            \[
+            \mathcal{S}:=\{[a]_{\sim}:a\in(0,1]\}
+            \]
+            é uma partição de $(0,1]$.
+            }
+            
+			\item Considere o conjunto $H = \{h \in s: s \in \mathcal{S}\}$ que consiste em coletar um elemento de cada uma das classes de equivalência distintas de $\sim$. Considere os conjuntos $H_n = H \oplus r_n$, $n \in \mathbb{N}$, onde $(r_n)_{n \in \mathbb{N}}$ é uma enumeração dos números racionais em $(0,1]$. Mostre que os $H_n$ são disjuntos, e que $\cup_{n \in \mathbb{N}} H_n = (0,1]$.
+			
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Seja $\mathcal{S}=\{[a]_{\sim}:a\in(0,1]\}$ a partição de $(0,1]$ dada no item (b).
+            }
+
+            \textcolor{LQ}{
+            Escolha um representante $h_s\in s$ para cada classe $s\in\mathcal{S}$ e defina
+            \[
+            H:=\{h_s:\ s\in\mathcal{S}\}.
+            \]
+            Fixe uma enumeração sem repetição $(r_n)_{n\in\mathbb{N}}$ de $\mathbb{Q}\cap(0,1]$ e ponha
+            \[
+            H_n:=H\oplus r_n=\{h\oplus r_n:\ h\in H\},\qquad n\in\mathbb{N}.
+            \]
+            }
+
+            
+            \textcolor{LQ}{
+            \textbf{Disjunção.}
+            }
+            
+            \textcolor{LQ}{
+            Suponha $x\in H_m\cap H_n$ com $m\neq n$. Então existem $h,h'\in H$ tais que
+            \[
+            x=h\oplus r_m=h'\oplus r_n.
+            \]
+            Assim $x\sim h$ e $x\sim h'$, logo $h\sim h'$; como $H$ tem exatamente um
+            representante por classe, conclui-se $h=h'$.
+            Agora escolha $s\in(0,1]$ tal que $s\oplus h=1$ (por exemplo, $s=1-h$ se $h<1$
+            e $s=1$ se $h=1$), veja que:
+            \[
+            s\oplus x
+            = s\oplus\left(h\oplus r_m\right)
+            = \left(s\oplus h\right)\oplus r_m
+            = 1\oplus r_m
+            = r_m,
+            \]
+            e, do mesmo modo,
+            \[
+            s\oplus x
+            = s\oplus\left(h\oplus r_n\right)
+            = \left(s\oplus h\right)\oplus r_n
+            = 1\oplus r_n
+            = r_n.
+            \]
+            Logo $r_m=r_n$, contrariando $m\neq n$. Portanto, $H_m\cap H_n=\varnothing$ para $m\neq n$.
+            }
+
+            \textcolor{LQ}{
+            \textbf{Cobertura de $(0,1]$.}
+            }
+
+            \textcolor{LQ}{
+            Se $x\in(0,1]$, seja $s=[x]_{\sim}\in\mathcal{S}$ e tome seu representante $h_s\in H$.
+            Por definição de classe de equivalência, existe $r\in\mathbb{Q}\cap(0,1]$ tal que
+            $x=h_s\oplus r$.
+            Escolhendo $n$ com $r_n=r$, obtemos $x\in H\oplus r_n=H_n$.
+            Assim,
+            \[
+            \bigcup_{n\in\mathbb{N}}H_n=(0,1].
+            \]
+            }
+
+            \textcolor{LQ}{
+            Conclui-se que os conjuntos $(H_n)_{n\in\mathbb{N}}$ são dois a dois disjuntos e sua união é todo $(0,1]$.
+            }
+            
+            \item Conclua que $H \notin \mathcal{B}(0,1]$. \textit{Dica:} suponha, por contradição, que $H \in \mathcal{B}(0,1]$, e use a igualdade do item anterior.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Do item (c) temos conjuntos $H_n:=H\oplus r_n$ dois a dois disjuntos, com
+            $\bigcup_{n\in\mathbb{N}}H_n=(0,1]$, onde $(r_n)$ é uma enumeração de
+            $\mathbb{Q}\cap(0,1]$.
+            }
+
+            \textcolor{LQ}{
+            Suponha, por contradição, que $H\in\mathcal{B}((0,1])$.
+            Pela invariância por translações e preservação de mensurabilidade dadas no enunciado,
+            cada $H_n=H\oplus r_n$ pertence a $\mathcal{B}((0,1])$ e
+            \[
+            \mathrm{Leb}(H_n)=\mathrm{Leb}(H)=:c\in[0,1].
+            \]
+            Como os $H_n$ são disjuntos, para todo $N\in\mathbb{N}$,
+            \[
+            \mathrm{Leb}\left(\bigcup_{n=1}^{N}H_n\right)=\sum_{n=1}^{N}\mathrm{Leb}(H_n)
+            =\sum_{n=1}^{N}c=Nc\le \mathrm{Leb}((0,1])=1.
+            \]
+            Logo $Nc\le 1$ para todo $N$, o que só é possível se $c=0$.
+            Então, pela continuidade da medida,
+            \[
+            1=\mathrm{Leb}((0,1])=\mathrm{Leb}\left(\bigcup_{n=1}^{\infty}H_n\right)
+            =\lim_{N\to\infty}\mathrm{Leb}\left(\bigcup_{n=1}^{N}H_n\right)
+            =\lim_{N\to\infty}Nc=0,
+            \]
+            uma contradição. Conclui-se que $H\notin\mathcal{B}((0,1])$.
+            }
+            
+            \textcolor{emerald}{\textbf{Comentário matemático:} \(H\) é um conjunto especial chamado \textbf{Conjunto de Vitali}, sua existência é equivalente ao Axioma da Escolha, você consegue ver o porquê?}
+    \end{partes}
+
+
+\question Prove a seguinte extensão do lema do $\pi$-sistema. Seja $(\Omega, \Sigma)$ um espaço mensurável, e $\mu_1$ e $\mu_2$ duas medidas sobre $\Sigma$ que são $\sigma$-finitas num conjunto $\mathcal{I}$, i.e. tais que existem $E_1, E_2 , E_3 \ldots \in \mathcal{I}$ disjuntos com  $\Omega = \cup_{i=1}^\infty E_i$ com $\mu_1(E_i)<\infty$ e $\mu_2(E_i)<\infty$ para todo $i \in \mathcal{I}$. Prove que, se $\mu_1(I)  = \mu_2(I)$ para todo $I \in \mathcal{I}$, e $\mathcal{I}$ é um $\pi$-sistema que gera $\Sigma$, então $\mu_1 =  \mu_2$.
+
+        \textcolor{LQ}{\textbf{Resolução:}}
+
+        \textcolor{LQ}{
+        Para cada $i\in\mathbb{N}$, defina medidas finitas em $(\Omega,\Sigma)$ por
+        \[
+        \nu^{(i)}_k(A):=\mu_k\!\left(A\cap E_i\right),\qquad A\in\Sigma,\ k=1,2.
+        \]
+        De fato, para conjuntos disjuntos $(A_j)_{j\geqslant 1}\subset\Sigma$,
+        \[
+        \nu^{(i)}_k\!\left(\bigcup_{j\geqslant 1}A_j\right)
+        =\mu_k\!\left(\bigcup_{j\geqslant 1}(A_j\cap E_i)\right)
+        =\sum_{j\geqslant 1}\mu_k(A_j\cap E_i)
+        =\sum_{j\geqslant 1}\nu^{(i)}_k(A_j),
+        \]
+        veja que $\nu^{(i)}_k(\Omega)=\mu_k(E_i)<\infty$.
+        }
+
+        \textcolor{LQ}{
+        Como $E_i\in\mathcal{I}$ e $\mathcal{I}$ é um $\pi$-sistema, para todo $I\in\mathcal{I}$ vale
+        $I\cap E_i\in\mathcal{I}$. Logo,
+        \[
+        \nu^{(i)}_1(I)=\mu_1(I\cap E_i)=\mu_2(I\cap E_i)=\nu^{(i)}_2(I),\qquad I\in\mathcal{I}.
+        \]
+        Aplicando o \textbf{lema do $\pi$-sistema no caso finito} às medidas finitas
+        $\nu^{(i)}_1$ e $\nu^{(i)}_2$ obtemos
+        \[
+        \nu^{(i)}_1(A)=\nu^{(i)}_2(A)\quad\text{para todo }A\in\Sigma,
+        \]
+        isto é,
+        \[
+        \mu_1(A\cap E_i)=\mu_2(A\cap E_i)\quad\text{para todo }A\in\Sigma\text{ e todo }i\in\mathbb{N}.
+        \]
+        }
+        
+        \textcolor{LQ}{
+        Por fim, para $A\in\Sigma$, usando que os $E_i$ são disjuntos e cobrem $\Omega$,
+        \[
+        \mu_1(A)
+        =\mu_1\!\left(\bigcup_{i\geqslant 1}(A\cap E_i)\right)
+        =\sum_{i\geqslant 1}\mu_1(A\cap E_i)
+        =\sum_{i\geqslant 1}\mu_2(A\cap E_i)
+        =\mu_2\!\left(\bigcup_{i\geqslant 1}(A\cap E_i)\right)
+        =\mu_2(A).
+        \]
+        Portanto, $\mu_1=\mu_2$ em $\Sigma$.
+        }
+
+\newpage
+
+\question
+
+Considere o espaço de medida $(\mathbb{R}, \mathcal{B}(\mathbb{R}), \operatorname{Leb})$, onde  $\operatorname{Leb}$ é a medida de Lebesgue sobre a reta, que satisfaz:
+		$$\operatorname{Leb}(a,b] = b-a, \quad \forall -\infty<a\leqslant b < \infty\, .$$ 
+		\begin{partes}
+			\item Use o resultado da questão anterior para concluir que as medidas dos intervalos $(a,b]$ caracterizam a medida de Lebesgue na reta.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Considere
+            \[
+            \mathcal{I}:=\{\varnothing\}\cup\{(a,b]:a<b\}.
+            \]
+            Veja $\mathcal{I}$ é um $\pi$-sistema: para $(a,b],(c,d]\in\mathcal{I}$,
+            \[
+            (a,b]\cap(c,d]=
+            \begin{cases}
+            \left(\max\{a,c\},\,\min\{b,d\}\right], & \max\{a,c\}<\min\{b,d\},\\
+            \varnothing, & \text{caso contrário},
+            \end{cases}
+            \]
+            logo a interseção pertence a $\mathcal{I}$.
+            Além disso, $\sigma(\mathcal{I})=\mathcal{B}(\mathbb{R})$:
+            de fato, $\mathcal{I}\subset\mathcal{B}(\mathbb{R})$ e, para $a<b$,
+            \[
+            (a,b)=\bigcup_{m,n\geqslant 1}\left(a+\tfrac{1}{m},\,b-\tfrac{1}{n}\right]\in\sigma(\mathcal{I}),
+            \]
+            de modo que todo aberto é união enumerável de elementos de $\mathcal{I}$ e,
+            portanto, $\mathcal{B}(\mathbb{R})\subset\sigma(\mathcal{I})$.
+            }
+
+            \textcolor{LQ}{
+            As medidas $\mathrm{Leb}$ e $\mu$ são $\sigma$-finitas em $\mathcal{I}$:
+            tomando $E_i=(i-1,i]\in\mathcal{I}$, $i\in\mathbb{Z}$, temos
+            $\mathbb{R}=\bigcup_{i\in\mathbb{Z}}E_i$ com $\mathrm{Leb}(E_i)=\mu(E_i)=1<\infty$.
+            Por hipótese, $\mu$ e $\mathrm{Leb}$ coincidem em todo $I\in\mathcal{I}$
+            (e em particular em $\varnothing$).
+            }
+
+            \textcolor{LQ}{
+            Aplicando o resultado da questão anterior (extensão do lema do $\pi$-sistema),
+            conclui-se que, por coincidirem em um $\pi$-sistema gerador no qual são
+            $\sigma$-finitas, as medidas devem coincidir em toda a $\sigma$-álgebra gerada:
+            \[
+            \mu=\mathrm{Leb}\quad\text{em }\mathcal{B}(\mathbb{R}).
+            \]
+            Logo, os valores em intervalos do tipo $(a,b]$ caracterizam unicamente a
+            medida de Lebesgue na reta.
+            }
+            
+			\item Considere a sequência de conjuntos mensuráveis $E_n = (n, \infty)$, $n \in \mathbb{N}$. Mostre que $\mu(E_n) = \infty$ para todo $n \in \mathbb{N}$, e que $\mu(\cap_{n \in \mathbb{N}} E_n) = 0$. Por que o teorema de convergência visto em aula não vale nesse caso?
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            \textbf{1) $\mu(E_n)=\infty$ para todo $n$.}
+            }
+
+            \textcolor{LQ}{
+            Escreva
+            \[
+            E_n=\bigcup_{k=0}^{\infty}\,(n+k,\,n+k+1],
+            \]
+            união disjunta. Pela $\sigma$-aditividade e pelo fato de
+            $\mu\!\left((a,b]\right)=b-a$,
+            \[
+            \mu(E_n)=\sum_{k=0}^{\infty}\mu\!\left((n+k,\,n+k+1]\right)
+            =\sum_{k=0}^{\infty}1=\infty.
+            \]
+            }
+
+            \textcolor{LQ}{
+            \textbf{2) $\mu\!\left(\bigcap_{n\in\mathbb{N}}E_n\right)=0$.}
+            }
+
+            \textcolor{LQ}{
+            Note que $\bigcap_{n\in\mathbb{N}}E_n=\varnothing$, pois não existe $x\in\mathbb{R}$
+            com $x>n$ para todo $n\in\mathbb{N}$. Logo,
+            \[
+            \mu\!\left(\bigcap_{n\in\mathbb{N}}E_n\right)=\mu(\varnothing)=0.
+            \]
+            }
+
+            \textcolor{LQ}{
+            \textbf{3) Por que o “teorema de convergência” não vale aqui?}
+            A sequência $(E_n)$ é \emph{decrescente} e $E_n\downarrow\varnothing$.
+            }
+
+            \textcolor{LQ}{
+            O teorema de \emph{continuidade de medidas por cima} (ou “convergência monótona para conjuntos”)
+            diz que, se $E_n\downarrow E$ e $\mu(E_1)<\infty$, então
+            \(\mu(E_n)\downarrow\mu(E)\).
+            Aqui, porém, $\mu(E_1)=\infty$, isto é, a hipótese de finitude \emph{falha};
+            de fato,
+            \[
+            \lim_{n\to\infty}\mu(E_n)=\infty
+            \qquad\text{enquanto}\qquad
+            \mu\!\left(\bigcap_{n\in \mathbb{N}}E_n\right)=0.
+            \]
+            Portanto o teorema não se aplica e a igualdade pode falhar exatamente como neste exemplo.
+            }            
+		\end{partes}
+
+\question 
+
+ Seja $\mathcal{V}$ o conjunto de teclas de uma máquina de escrever. Considere um experimento em que um macaco digita sequencialmente em uma máquina de escrever, infinitamente no tempo. O espaço amostral é dado por $\mathcal{V}^{\mathbb{N}}$, o espaço de sequências com valores em $\mathcal{V}$. Considere a $\sigma$-álgebra $\mathcal{F}$ gerada pelos eventos $\{\omega \in \mathcal{V}^{\mathbb{N}}: \omega_k = v\}$, para todo $k \in \mathbb{N}$ $v \in \mathcal{V}$. Esses são os eventos em que o macaco digita um caractere $v$ na $k$-ésima posição do texto.
+		\begin{partes}
+			\item Considere o subconjunto $\mathcal{I}$ de eventos da forma $\{\omega \in \mathcal{V}^{\mathbb{N}} : \omega_{i_1} = v_1 , \omega_{i_2} = v_2,\ldots, \omega_{i_k} = v_k\}$, para todo $k<\infty$, $i_1 < i_2 < \ldots < i_k$ e $v_1,v_2\ldots, v_k \in \mathcal{V}$. Inclua também o conjunto vazio em $\emptyset$ em $\mathcal{I}$. Mostre que $\mathcal{I}$ é um $\pi$-sistema e $\mathcal{I}\subseteq \mathcal{F}$.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Para $k\in\mathbb{N}$ e $v\in\mathcal{V}$, denote
+            \[
+            C(k,v):=\{\omega\in\mathcal{V}^{\mathbb{N}}:\ \omega_k=v\}.
+            \]
+            }
+
+            \textcolor{LQ}{
+            Sejam
+            \[
+            A=\bigcap_{r=1}^{m} C(i_r,v_r),\qquad
+            B=\bigcap_{s=1}^{n} C(j_s,w_s)\in\mathcal{I},
+            \]
+            com os índices já em ordem crescente.
+            Considere o conjunto de índices $M=\{i_1,\ldots,i_m\}\cup\{j_1,\ldots,j_n\}$.
+            Para cada $t\in M$:
+            \begin{itemize}
+            \item se $t$ aparece em ambas as listas e há conflito $v\neq w$, então
+            $C(t,v)\cap C(t,w)=\varnothing$ e portanto $A\cap B=\varnothing\in\mathcal{I}$;
+            \item caso contrário, há no máximo uma restrição para $t$, e
+            \[
+            A\cap B=\bigcap_{t\in M} C\!\left(t,u_t\right)
+            \]
+            com $u_t$ o valor prescrito em $A$ ou em $B$ (e, quando $t$ aparece em ambas, os valores coincidem).
+            Reordenando os índices, obtemos novamente um elemento de $\mathcal{I}$.
+            \end{itemize}
+            Assim, $A\cap B\in\mathcal{I}$ em qualquer caso, logo $\mathcal{I}$ é um $\pi$-sistema.
+            }
+
+            \textcolor{LQ}{
+            {$\boldsymbol {\mathcal{I}\subset\mathcal{F}}$.}
+            }
+
+            \textcolor{LQ}{
+            Para $A=\bigcap_{r=1}^{m} C(i_r,v_r)\in\mathcal{I}$, temos que $A$ é interseção
+            finita de conjuntos geradores $C(i_r,v_r)$. Como toda $\sigma$-álgebra é fechada
+            por interseções finitas e $\mathcal{F}$ contém cada $C(i_r,v_r)$, conclui-se
+            $A\in\mathcal{F}$. Logo, $\mathcal{I}\subset\mathcal{F}$.
+            }
+
+            \newpage
+            
+			\item Suponha agora que o macaco digita as teclas de forma uniforme e independente no tempo, isto é, considere a probabilidade $\mathbb{P}$ sobre $(\mathcal{V}^{\mathbb{N}}, \mathcal{F})$ da forma:
+
+			$$\mathbb{P}[\{\omega \in \mathcal{V}^{\mathbb{N}} : \omega_{i_1} = v_1 , \omega_{i_2} = v_2,\ldots, \omega_{i_k} = v_k\}] = \frac{1}{|\mathcal{V}|^k}$$
+			para todo evento em $\mathcal{I}$ não vazio, e $\mathbb{P}[\emptyset] = 0$. Use o lema do $\pi$-sistema para concluir que as probabilidades sobre $\mathcal{I}$ caracterizam $\mathbb{P}$.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Do item (a), o conjunto
+            \[
+            \mathcal{I}:=\{\varnothing\}\cup
+            \left\{\bigcap_{r=1}^{k}C(i_r,v_r):\, k<\infty,\ 1\le i_1<\cdots<i_k,\ v_r\in\mathcal{V}\right\}
+            \]
+            é um $\pi$-sistema e, como contém cada $C(i,v)$ e é feito de interseções finitas
+            deles, vale $\sigma(\mathcal{I})=\mathcal{F}$.
+            }
+
+            \textcolor{LQ}{
+            Defina a probabilidade $\mathbb{P}$ em $\mathcal{F}$ impondo, para todo evento
+            não vazio de $\mathcal{I}$,
+            \[
+            \mathbb{P}\!\left(\{\omega:\omega_{i_1}=v_1,\ldots,\omega_{i_k}=v_k\}\right)
+            =\frac{1}{|\mathcal{V}|^{\,k}},
+            \qquad \mathbb{P}(\varnothing)=0.
+            \]
+            }
+
+            \textcolor{LQ}{
+            Mostremos que esses valores em $\mathcal{I}$ determinam unicamente $\mathbb{P}$.
+            Se $\mathbb{Q}$ é \emph{qualquer} probabilidade em $(\Omega,\mathcal{F})$ que
+            coincide com $\mathbb{P}$ em $\mathcal{I}$, então:
+            }
+
+            \textcolor{LQ}{
+            1) $\mathcal{I}$ é um $\pi$-sistema que gera $\mathcal{F}$;
+            }
+
+            \textcolor{LQ}{
+            2) $\mathbb{P}$ e $\mathbb{Q}$ são medidas finitas (probabilidades). Logo são
+            $\sigma$-finitas em $\mathcal{I}$; por exemplo, os conjuntos
+            $E_v:=C(1,v)\in\mathcal{I}$, $v\in\mathcal{V}$, são disjuntos,
+            $\Omega=\bigcup_{v\in\mathcal{V}}E_v$ e
+            $\mathbb{P}(E_v)=\mathbb{Q}(E_v)=1/|\mathcal{V}|<\infty$.
+            }
+
+            \textcolor{LQ}{
+            Pelo \textbf{lema do $\pi$-sistema},
+            segue que $\mathbb{P}=\mathbb{Q}$ em toda $\mathcal{F}$.
+            Portanto, os valores prescritos em $\mathcal{I}$ \textbf{caracterizam}
+            unicamente a probabilidade $\mathbb{P}$ no espaço $(\Omega,\mathcal{F})$.
+            }
+
+			\item Seja $S_n$ o evento em que, a partir da enésima posição do texto, o macaco digita as obras completas de Shakespeare. Use o segundo lema de Borell-Cantelli para concluir que a probabilidade de que o macaco digita as obras completas de Shakespeare infinitas vezes é 1.
+        
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Fixe uma palavra (finita) $W=(w_1,\ldots,w_L)\in\mathcal{V}^L$ que codifica as
+            obras completas de Shakespeare no alfabeto $\mathcal{V}$ (com espaços,
+            pontuação etc.). Para $n\geqslant 1$, defina o evento
+            \[
+            S_n:=\{\omega\in\mathcal{V}^{\mathbb{N}}:\ (\omega_n,\ldots,\omega_{n+L-1})=W\}.
+            \]
+            Pela definição de $\mathbb{P}$ (teclas i.i.d. e uniformes),
+            \[
+            \mathbb{P}(S_n)=|\mathcal{V}|^{-L}=:p\quad\text{para todo }n.
+            \]
+            }
+
+            \textcolor{LQ}{
+            Os eventos $(S_n)$ não são independentes em geral (quando $|n-m|<L$ eles
+            compartilham coordenadas), mas a subfamília
+            \[
+            T_m:=S_{1+(m-1)L},\qquad m\geqslant 1,
+            \]
+            depende de blocos disjuntos de coordenadas e, portanto, é formada por eventos
+            \emph{independentes}.} 
+
+            \textcolor{LQ}{
+            Pelo 2º Borel–Cantelli aplicado à subfamília independente $(T_m)$,
+            \[
+            \mathbb{P}\!\left(\limsup_{m\to\infty}T_m\right)
+            =\mathbb{P}\!\left(\bigcap_{N=1}^{\infty}\ \bigcup_{m\geqslant N} T_m\right)=1.
+            \]
+            Como $T_m=S_{1+(m-1)L}$, para todo $N$ vale
+            \[
+            \bigcup_{m\geqslant N}T_m
+            =\bigcup_{m\geqslant N}S_{1+(m-1)L}
+            \subseteq \bigcup_{n\geqslant 1+(N-1)L} S_n,
+            \]
+            e, ao intersectar em $N$,
+            \[
+            \limsup_{m\to\infty}T_m
+            \subseteq \limsup_{n\to\infty}S_n
+            =\bigcap_{N=1}^{\infty}\ \bigcup_{n\geqslant N} S_n.
+            \]
+            Logo,
+            \[
+            1=\mathbb{P}\!\left(\limsup_{m\to\infty}T_m\right)
+            \le \mathbb{P}\!\left(\limsup_{n\to\infty}S_n\right)\le 1,
+            \]
+            e concluímos
+            \[
+            \mathbb{P}\!\left(\limsup_{n\to\infty}S_n\right)=1.
+            \]
+            }
+            \medskip
+            
+            \textcolor{emerald}{\textbf{Comentário sobre escalas de tempo.}
+            Se $q:=|\mathcal{V}|$ e o texto tem comprimento $L$, a ocorrência de $W$ ao
+            início de um dado bloco de $L$ posições tem probabilidade $p=q^{-L}$. Em blocos
+            disjuntos, o número de blocos até a \emph{primeira} ocorrência é geométrico
+            com esperança $1/p=q^{L}$. Assim, o número esperado de toques até ver $W$ uma
+            única vez é da ordem de $q^{L}$.
+            }
+
+            \textcolor{emerald}{
+            Tomando valores conservadores (por exemplo, $q\approx 50$ para uma máquina de
+            escrever comum e $L\approx 5\times 10^{6}$ caracteres para todas as obras),
+            temos
+            \[
+            \log_{10}\big(q^{L}\big)=L\log_{10}q\approx 5\cdot 10^{6}\times 1{,}699
+            \approx 8{,}5\times 10^{6}.
+            \]
+            Ou seja, a \textbf{espera média} é cerca de $10^{8{,}5\text{ milhões}}$ toques.
+            Mesmo a $10$ toques por segundo, em toda a idade do universo
+            ($\sim 4{,}3\times 10^{17}$ s) cabem apenas $\sim 10^{19}$ toques.
+            Portanto, embora o resultado $\mathbb{P}(\cdot)=1$ assegure que a ocorrência seja
+            certa no sentido probabilístico (infinitas vezes no horizonte infinito),
+            ele não é uma previsão operacional em escalas físicas razoáveis. Portanto vemos como conclusões assintóticas dos lemas de Borel–Cantelli não devem
+            ser extrapoladas ingenuamente para experimentos concretos de duração finita.
+            }
+            
+		\end{partes}
+
+\question
+
+Seja $(\Omega,\Sigma)$ um espaço mensurável, e $f:\Omega\mapsto \mathbb{R}$ uma função $\Sigma$/$\mathcal{B}(\mathbb{R})$-mensurável. Mostre que as seguintes funções são mensuráveis:
+		\begin{partes}
+			\item	$g = \max\{f,0\}$.
+            
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Para $a\in\mathbb{R}$,
+            \[
+            g^{-1}((-\infty,a))=\left\{\omega\in\Omega:g(\omega)<a\right\}\equiv\{g<a\}=\{\max(f,0)<a\}=
+            \begin{cases}
+            \varnothing, & a\le 0,\\[2mm]
+            \{f<a\}, & a>0,
+            \end{cases}
+            \]
+            pois, se $a>0$, então $f<0\Rightarrow \max(f,0)=0<a$, logo $\{g<a\}=\{f<a\}$.
+            Como $f$ é mensurável, $\{f<a\}\in\Sigma$, e portanto $\{g<a\}\in\Sigma$ para
+            todo $a$. Logo $g$ é mensurável.
+            }
+            
+			\item $g = \min\{f,0\}$.
+                
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            \[
+            \{g<a\}=\{\min(f,0)<a\}=
+            \begin{cases}
+            \{f<a\}, & a\le 0,\\[2mm]
+            \Omega, & a>0,
+            \end{cases}
+            \]
+            pois, se $a>0$, então $f\le 0\Rightarrow \min(f,0)=f<a$ e $f>0\Rightarrow \min(f,0)=0<a$,
+            o que dá a totalidade de $\Omega$. Assim $\{g<a\}\in\Sigma$ para todo $a$,
+            mostrando que $g$ é mensurável.
+            }
+            
+			\item $g = s \circ f$, onde $s:\mathbb{R}\mapsto \mathbb{R}$ é uma função contínua.
+
+            \textcolor{LQ}{\textbf{Resolução:}}
+
+            \textcolor{LQ}{
+            Para todo aberto $O\subset\mathbb{R}$,
+            \[
+            g^{-1}(O)=\{\omega:s(f(\omega))\in O\}=f^{-1}\!\left(s^{-1}(O)\right).
+            \]
+            Como $s$ é contínua, $s^{-1}(O)$ é aberto; como $f$ é mensurável,
+            $f^{-1}(\,\cdot\,)$ envia abertos em conjuntos mensuráveis de $\Sigma$. Logo $g^{-1}(O)\in\Sigma$
+            para todo aberto $O$, e $g$ é mensurável.
+            }
+		\end{partes}
+
+%================================================================
+%-------------------FIM DA LISTA
+%================================================================
+\end{questions}
+%===========================================================
+
+\end{document}
